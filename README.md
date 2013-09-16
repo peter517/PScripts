@@ -1,4 +1,4 @@
-PScript
+PScripts
 =======
 
-Common Script On Linux Or Windows 
+Common Scripts On Linux Or Windows 
