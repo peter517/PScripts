@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z "$1" ] || [ -z "$2" ];then
+        echo "no parameter"
+        return 1;
+fi
+
 date_start=$(date +%s)
 
 awk 'BEGIN{}
