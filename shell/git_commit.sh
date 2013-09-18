@@ -5,6 +5,6 @@ if [ -z "$1" ];then
         return 1;
 fi
 
-git add -A && git commit -m $1 && git push
+git add -A && git commit -m "$1" && git push
 
 
