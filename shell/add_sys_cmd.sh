@@ -20,7 +20,7 @@ fi
 
 insertNum=`grep -nw "alias" $envfile | cut -d : -f 1 | tail -1`
  
-sed -i $insertNum'a''alias '$cmd'='\"$script\" $envfile 
+sed -i $insertNum'a''alias '$cmd'=''\". '$script'\"' $envfile 
 
 source .bashrc
 cd -
