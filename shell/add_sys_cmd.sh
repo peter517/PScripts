@@ -5,6 +5,7 @@ if [ -z "$1" ] || [ -z "$2" ];then
 	return 1;
 fi
 
+
 envfile=".bashrc"
 cmd=$1
 script=$2
@@ -19,10 +20,10 @@ if [ "$isExist" ];then
 fi
 
 insertNum=`grep -nw "alias" $envfile | cut -d : -f 1 | tail -1`
- 
+
 sed -i $insertNum'a''alias '$cmd'=''\". '$script'\"' $envfile 
+
 
 source .bashrc
 cd -
 echo "add success"
-
