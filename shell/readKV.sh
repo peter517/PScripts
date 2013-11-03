@@ -5,6 +5,8 @@ if [ ! -f $1 ];then
         return;
 fi
 
+filename=$1
+
 oldIFS=$IFS
 IFS=”=“
 
@@ -13,10 +15,10 @@ declare -a propMap
 while read k v
 do
         propMap[$k]=$v
-done < $1
+done < $filename
 
 IFS=$oldIFS
 
 
-#echo ${propMap["a"]}
-#echo ${propMap["b"]}
+echo ${propMap["a"]}
+echo ${propMap["b"]}
