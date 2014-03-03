@@ -1,4 +1,4 @@
-#ibin/sh
+#!/bin/sh
 
 export UPLOAD_PATH=/cygdrive/c/Users/pengjun.pj/Desktop/upload
 

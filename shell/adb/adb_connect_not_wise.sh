@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 [ -z $1 ] && echo "no params" && adb disconnect && return
 

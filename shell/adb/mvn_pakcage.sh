@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 . env.sh 
 
@@ -8,3 +8,5 @@ mvn package
 cp $MMPC_JAR_PATH/target/mmp-client-1.0.0.jar $VIDEOCHAT_BASE_PATH/libs/
 
 cd -
+
+rm $VIDEOCHAT_PATH/bin/*.apk
