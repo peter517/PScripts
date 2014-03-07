@@ -3,8 +3,8 @@
 . env.sh
 
 
-[ -z $1 ] && echo "no params" && adb disconnect && return
-[ -z $2 ] && echo "no params" && adb disconnect && return
+[ -z $1 ] && echo "no params" && return
+[ -z $2 ] && echo "no second params" && return
 
 . adb_connect_not_wise.sh $1
 
