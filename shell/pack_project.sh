@@ -1,4 +1,10 @@
-#!bin/sh
+#!/bin/bash
+#Copyright (C) 2010-2020 PScript Project
+#Author:pengjun
+#Email:peter517@126.com
+#CreateTime:2014-04-04_15:34:05
+#Comments:
+#
 
 pack_dir=pack_wp
 win_path=/cygdrive/d/project/mmpc-wp/src/client/windows/webrtc/trunk/build/Win32/Release/
