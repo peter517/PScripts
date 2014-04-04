@@ -2,8 +2,10 @@
 
 [ $# -le 1 ] && echo "no param" && return
 
-fields=`cat $1 | awk '{ gsub(/^[ \t]+/, "", $0); if ($0 != "" && match($0, /^\*|^\//) == false ) print $2}' | xargs `
-echo fields=$fields
+uncomment_file_content=`sed  's/\/.*\|\*.*\///g' $1`
+
+fields=`echo $uncomment_file_content | awk '{ gsub(/^[ \t]+/, "", $0); if ($0 != "" && match($0, /^\*|^\//) == false ) print $2}' | xargs `
+#echo fields=$fields
 
 for field in $fields
 do
