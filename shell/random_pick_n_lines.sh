@@ -4,12 +4,15 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	random pick n line of a file
 
 if [ -z "$1" ] || [ -z "$2" ];then
         echo "no parameter"
         return 1;
 fi
+
+FILE_NAME=$1
+N_FOR_PICK=$2
 
 awk 'BEGIN{srand()}
 {
@@ -34,4 +37,4 @@ awk 'BEGIN{srand()}
 
 END{
 for (k=0; k<LEN; k++)  print record[k];
-}' LEN=$2 $1
+}' LEN=$N_FOR_PICK $FILE_NAME

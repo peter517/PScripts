@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	an example for pack project using cygwin in windows
 
 pack_dir=pack_wp
 win_path=/cygdrive/d/project/mmpc-wp/src/client/windows/webrtc/trunk/build/Win32/Release/

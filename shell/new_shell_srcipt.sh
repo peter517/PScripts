@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	create the model of a new shell script
 
 test -z $1 && "no parm" && return
 

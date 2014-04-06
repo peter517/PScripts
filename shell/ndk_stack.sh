@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	print ndk stack
 
 [ -z "$1" ] && echo "no parameter" && return 1;
 

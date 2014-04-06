@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	commit changed files under git control
 
 if [ -z "$1" ];then
         echo "no parameter"

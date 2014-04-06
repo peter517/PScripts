@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	add simple alias system commond to .bashrc
 
 if [ -z "$1" ] || [ -z "$2" ];then
 	echo "no parameter"

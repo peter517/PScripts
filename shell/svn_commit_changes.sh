@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	commit the changed files under svn control
 
 
 #[ -z "$1" ] && echo "no svn commit, exit" && return

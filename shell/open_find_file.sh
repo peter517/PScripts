@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#
+#	open the only file after execute the cmd 'find'`
 
 [ -z "$1" ] && echo "no para, enter filename need to find" && return;
 
