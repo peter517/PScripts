@@ -11,6 +11,8 @@
 #include <unistd.h>
 
 #include "pthread/include/pthread.h"
+#include "math/include/math.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -29,6 +31,7 @@ int main(int argc, char *argv[])
 
     sleep(3);
     printf("Main thread exit...\n");
-
+    printf("math test=%d\n",add(1,1));
+    
     return 0;
 }

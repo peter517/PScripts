@@ -4,6 +4,8 @@
       {
         'target_name': 'linux_c_test',
         'type': 'executable',
+        'dependencies': [
+        ],
         'variables': 
         { 
            'IS_DEBUG': 'true', 
@@ -19,7 +21,13 @@
         ],
         'include_dirs': 
         [
+            '.',
+            '..',
             'modules',
+        ],
+        'libraries':
+        [
+            'modules/math/out/Default/obj.target/libmymath.a'
         ],
 	    'conditions': 
 	    [
