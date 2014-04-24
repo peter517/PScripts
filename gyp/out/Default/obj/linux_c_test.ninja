@@ -1,0 +1,19 @@
+ar = $ar_target
+cc = $cc_target
+cxx = $cxx_target
+ld = $ld_target
+defines = -DGYP_DEFINE -DIS_DEBUG
+includes = -I../../modules
+cflags = -Werror -Wall
+cflags_c = 
+cflags_cc = 
+
+build obj/linux_c_test.main.o: cxx ../../main.cc
+build obj/modules/pthread/linux_c_test.pthread_once_test.o: cxx $
+    ../../modules/pthread/pthread_once_test.cc
+
+ldflags = -pthread
+libs = 
+build linux_c_test: link obj/linux_c_test.main.o $
+    obj/modules/pthread/linux_c_test.pthread_once_test.o
+  postbuilds = 

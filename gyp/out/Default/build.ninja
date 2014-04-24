@@ -1,0 +1,40 @@
+cc = gcc
+cxx = g++
+ld = flock linker.lock $cxx
+ar = ar
+ar_target = $ar
+cc_target = $cc
+cxx_target = $cxx
+ld_target = flock linker.lock $cxx_target
+
+rule cc
+  command = $cc -MMD -MF $out.d $defines $includes $cflags $cflags_c $cflags_pch_c -c $in -o $out
+  description = CC $out
+  depfile = $out.d
+rule cxx
+  command = $cxx -MMD -MF $out.d $defines $includes $cflags $cflags_cc $cflags_pch_cc -c $in -o $out
+  description = CXX $out
+  depfile = $out.d
+rule alink
+  command = rm -f $out && $ar rcsT $out $in
+  description = AR $out
+rule solink
+  command = $ld -shared $ldflags -o $out -Wl,-soname=$soname -Wl,--whole-archive $in -Wl,--no-whole-archive $libs
+  description = SOLINK $out
+rule solink_module
+  command = $ld -shared $ldflags -o $out -Wl,-soname=$soname -Wl,--start-group $in -Wl,--end-group $libs
+  description = SOLINK(module) $out
+rule link
+  command = $ld $ldflags -o $out -Wl,-rpath=\$$ORIGIN/lib -Wl,--start-group $in -Wl,--end-group $libs
+  description = LINK $out
+rule stamp
+  command = ${postbuilds}touch $out
+  description = STAMP $out
+rule copy
+  command = ln -f $in $out 2>/dev/null || (rm -rf $out && cp -af $in $out)
+  description = COPY $in $out
+
+subninja obj/linux_c_test.ninja
+
+build all: phony linux_c_test
+default all
