@@ -19,12 +19,15 @@ set pull_playout_bat=%box_ip%_pull_playout.bat
 
 if not exist %dir_name% md %dir_name%
 
+@del /f /s %dir_name%\*.bat > nul
+
 @echo on
 :adb_connect
 @echo @adb disconnect > %dir_name%/%adb_connent_bat%
 @echo @adb connect %box_ip% >> %dir_name%/%adb_connent_bat%
 @echo @adb remount >> %dir_name%/%adb_connent_bat%
 @echo @adb devices >> %dir_name%/%adb_connent_bat%
+@attrib %dir_name%/%adb_connent_bat% +r
 @echo create %adb_connent_bat% finshed!
 
 :pull_log
@@ -34,6 +37,7 @@ if not exist %dir_name% md %dir_name%
 @echo adb logcat -v time -d ^> vc_%%pull_log_time%%.txt >> %dir_name%/%pull_log_bat%
 @echo @echo finsh pull log >> %dir_name%/%pull_log_bat%
 @echo @pause >> %dir_name%/%pull_log_bat%
+@attrib %dir_name%/%pull_log_bat% +r
 @echo create %pull_log_bat% finshed!
 
 :install
@@ -45,6 +49,7 @@ if not exist %dir_name% md %dir_name%
 @echo @adb shell am start -n %apk_main_activity_name% >> %dir_name%/%install_bat%
 @echo @echo finsh install apk >> %dir_name%/%install_bat%
 @echo @pause >> %dir_name%/%install_bat%
+@attrib %dir_name%/%install_bat% +r
 @echo create %install_bat% finshed!
 
 :install_online
@@ -52,6 +57,7 @@ if not exist %dir_name% md %dir_name%
 @echo @adb shell ping -c 1 -s 100 %remote_server% >> %dir_name%/%install_online_bat%
 @echo @echo start install apk online... >> %dir_name%/%install_online_bat%
 @echo @pause >> %dir_name%/%install_online_bat%
+@attrib %dir_name%/%install_online_bat% +r
 @echo create %install_online_bat% finshed!
 
 :pull record
@@ -64,6 +70,7 @@ if not exist %dir_name% md %dir_name%
 @echo @adb pull /sdcard/mmpc/audio/ >> %dir_name%/%pull_record_bat%
 @echo @echo finsh pull record >> %dir_name%/%pull_record_bat%
 @echo @pause >> %dir_name%/%pull_record_bat%
+@attrib %dir_name%/%pull_record_bat% +r
 @echo create %pull_record_bat% finshed!
 
 :pull playout
@@ -76,6 +83,7 @@ if not exist %dir_name% md %dir_name%
 @echo @adb pull /sdcard/mmpc/audio/ >> %dir_name%/%pull_playout_bat%
 @echo @echo finsh pull playout >> %dir_name%/%pull_playout_bat%
 @echo @pause >> %dir_name%/%pull_playout_bat%
+@attrib %dir_name%/%pull_playout_bat% +r
 @echo create %pull_playout_bat% finshed!
 
 @pause
