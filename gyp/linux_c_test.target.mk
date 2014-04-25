@@ -19,8 +19,7 @@ CFLAGS_CC_Debug := -Werror \
 
 INCS_Debug := -I. \
 	-I.. \
-	-Imodules \
-	-Imodules/random/out/Debug/obj.target
+	-Imodules
 
 DEFS_Release := '-DGYP_DEFINE' \
 	'-DGYP_VAR' \
@@ -39,10 +38,10 @@ CFLAGS_CC_Release := -Werror \
 
 INCS_Release := -I. \
 	-I.. \
-	-Imodules \
-	-Imodules/random/out/Debug/obj.target
+	-Imodules
 
 OBJS := $(obj).target/$(TARGET)/main.o \
+	$(obj).target/$(TARGET)/loadso_utils.o \
 	$(obj).target/$(TARGET)/modules/pthread/pthread_once_test.o
 
 # Add to the list of files we specially track dependencies for.
@@ -80,7 +79,9 @@ LDFLAGS_Release := -pthread \
 	-Wl,-rpath=\$$ORIGIN/lib.target/ \
 	-Wl,-rpath-link=\$(builddir)/lib.target/
 
-LIBS := 
+LIBS := -ldl \
+	prebuild/libprebuildmymath.a \
+	prebuild/libprebuildrandom.so
 
 $(builddir)/linux_c_test: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/linux_c_test: LIBS := $(LIBS)

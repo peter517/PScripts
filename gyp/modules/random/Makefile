@@ -313,8 +313,8 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.s FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,random.target.mk)))),)
-  include random.target.mk
+                 $(join ^,prebuildrandom.target.mk)))),)
+  include prebuildrandom.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@

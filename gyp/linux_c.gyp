@@ -35,6 +35,7 @@
         'sources': 
         [
             'main.cc',
+            'loadso_utils.cc',
             'modules/pthread/pthread_once_test.cc',
         ],
         'include_dirs': 
@@ -42,10 +43,12 @@
             '.',
             '..',
             'modules',
-            'modules/random/out/Debug/obj.target',
         ],
         'libraries':
         [
+            '-ldl',
+            'prebuild/libprebuildmymath.a',
+            'prebuild/libprebuildrandom.so',
         ],
 	    'conditions': 
 	    [
