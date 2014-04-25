@@ -313,13 +313,13 @@ $(obj).$(TOOLSET)/%.o: $(obj)/%.s FORCE_DO_CMD
 
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
-                 $(join ^,mymath.target.mk)))),)
-  include mymath.target.mk
+                 $(join ^,random.target.mk)))),)
+  include random.target.mk
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = /usr/bin/gyp -fmake --ignore-environment "--toplevel-dir=." "--depth=." math_lib.gyp
-Makefile: math_lib.gyp
+cmd_regen_makefile = /usr/bin/gyp -fmake --ignore-environment "--toplevel-dir=." "--depth=." random_so.gyp
+Makefile: random_so.gyp
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included

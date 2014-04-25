@@ -21,7 +21,7 @@ else
 endif
 
 # Specify BUILDTYPE=Release on the command line for a release build.
-BUILDTYPE ?= Default
+BUILDTYPE ?= Debug
 
 # Directory all our build output goes into.
 # Note that this must be two directories beneath src/ for unit tests to pass,
@@ -316,10 +316,20 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
                  $(join ^,linux_c_test.target.mk)))),)
   include linux_c_test.target.mk
 endif
+ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
+    $(findstring $(join ^,$(prefix)),\
+                 $(join ^,modules/math/mymath.target.mk)))),)
+  include modules/math/mymath.target.mk
+endif
+ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
+    $(findstring $(join ^,$(prefix)),\
+                 $(join ^,modules/random/random.target.mk)))),)
+  include modules/random/random.target.mk
+endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
 cmd_regen_makefile = /usr/bin/gyp -fmake --ignore-environment "--toplevel-dir=." "--depth=." linux_c.gyp
-Makefile: linux_c.gyp
+Makefile: linux_c.gyp modules/random/random_so.gyp modules/math/math_lib.gyp
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included

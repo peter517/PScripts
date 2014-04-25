@@ -1,0 +1,1 @@
+cmd_out/Debug/obj.target/modules/random/librandom.so := flock out/Debug/linker.lock g++ -shared   -Wl,-soname=librandom.so -o out/Debug/obj.target/modules/random/librandom.so -Wl,--whole-archive out/Debug/obj.target/random/modules/random/random.o -Wl,--no-whole-archive 

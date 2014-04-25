@@ -1,1 +1,0 @@
-cmd_out/Default/linux_c_test := flock out/Default/linker.lock g++ -pthread  -o out/Default/linux_c_test -Wl,--start-group out/Default/obj.target/linux_c_test/main.o out/Default/obj.target/linux_c_test/modules/pthread/pthread_once_test.o -Wl,--end-group modules/math/out/Default/obj.target/libmymath.a

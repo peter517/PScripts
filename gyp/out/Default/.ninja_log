@@ -1,4 +1,0 @@
-# ninja log v5
-0	38	0	obj/linux_c_test.main.o	7490ac77641d5386
-1	39	0	obj/modules/pthread/linux_c_test.pthread_once_test.o	ca2757f8d77100ac
-39	70	0	linux_c_test	fe75205a2f772065

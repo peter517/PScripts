@@ -12,6 +12,7 @@
 
 #include "pthread/include/pthread.h"
 #include "math/include/math.h"
+#include "random/include/random.h"
 
 
 int main(int argc, char *argv[])
@@ -20,10 +21,18 @@ int main(int argc, char *argv[])
         printf("GYP_DEFINE\n");
     #endif
     
-    #ifdef IS_DEBUG
-        printf("IS_DEBUG\n");
+    #ifdef GYP_VAR
+        printf("GYP_VAR\n");
     #endif
 
+    #ifdef DEBUG
+        printf("DEBUG\n");
+    #endif
+    
+    #ifdef COMPLIE_MODE
+        printf("COMPLIE_MODE\n");
+    #endif
+    
     pthread_t thrd1, thrd2;
 
     pthread_create(&thrd1, NULL, task1, NULL);
@@ -32,6 +41,7 @@ int main(int argc, char *argv[])
     sleep(3);
     printf("Main thread exit...\n");
     printf("math test=%d\n",add(1,1));
+    printf("random int=%d\n",getRandomInt());
     
     return 0;
 }

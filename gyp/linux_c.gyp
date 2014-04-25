@@ -1,14 +1,32 @@
  {
+    'target_defaults':
+    {
+        'default_configuration': 'Debug',
+        'configurations': 
+        {
+            'Debug': 
+            {
+                'defines': [ 'DEBUG'],
+            },
+            'Release': 
+            {
+                'defines': [ 'NDEBUG' ],
+            }
+        },
+    },
+    
     'targets': 
     [
       {
         'target_name': 'linux_c_test',
         'type': 'executable',
         'dependencies': [
+            'modules/random/random_so.gyp:random',
+            'modules/math/math_lib.gyp:mymath'
         ],
         'variables': 
         { 
-           'IS_DEBUG': 'true', 
+           'GYP_VAR': 'gyp', 
         },
         'defines': 
         [
@@ -24,10 +42,10 @@
             '.',
             '..',
             'modules',
+            'modules/random/out/Debug/obj.target',
         ],
         'libraries':
         [
-            'modules/math/out/Default/obj.target/libmymath.a'
         ],
 	    'conditions': 
 	    [
@@ -42,16 +60,21 @@
                         '-Werror',
                         '-Wall',
                 ],
+                'cflags_cc': 
+                [
+                        '-Werror',
+                        '-Wall',
+                ]
              },
              ],
-             ['IS_DEBUG == "true"', 
+             ['GYP_VAR == "gyp"', 
                 {
                     'defines': 
                     [
-                        'IS_DEBUG',
+                        'GYP_VAR',
                     ],
                 }
-             ]
+             ],
          ],        
        },
      ],

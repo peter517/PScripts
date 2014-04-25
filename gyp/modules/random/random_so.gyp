@@ -18,11 +18,11 @@
     'targets':
     [
     {
-       'target_name': 'mymath',
-       'type': 'static_library',
+       'target_name': 'random',
+       'type': 'shared_library',
        'sources': 
        [
-           'math.cc',
+           'random.cc',
        ],
        'include_dirs': 
        [
