@@ -22,7 +22,7 @@
         'type': 'executable',
         'dependencies': [
             'modules/random/random_so.gyp:random',
-            'modules/math/math_lib.gyp:mymath'
+            'modules/math/math_lib.gyp:mymath',
         ],
         'variables': 
         { 
@@ -48,7 +48,6 @@
         [
             '-ldl',
             'prebuild/libprebuildmymath.a',
-            'prebuild/libprebuildrandom.so',
         ],
 	    'conditions': 
 	    [

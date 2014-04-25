@@ -17,7 +17,7 @@ pthread_once_t once = PTHREAD_ONCE_INIT;
 
 void once_run(void)
 {
-    sleep(5);
+    sleep(2);
     printf("once_run in thread %d\n", (int)pthread_self());
 }
 

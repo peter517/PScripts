@@ -80,8 +80,7 @@ LDFLAGS_Release := -pthread \
 	-Wl,-rpath-link=\$(builddir)/lib.target/
 
 LIBS := -ldl \
-	prebuild/libprebuildmymath.a \
-	prebuild/libprebuildrandom.so
+	prebuild/libprebuildmymath.a
 
 $(builddir)/linux_c_test: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/linux_c_test: LIBS := $(LIBS)

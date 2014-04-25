@@ -27,7 +27,7 @@
        'include_dirs': 
        [
            'include',
-       ],    
+       ], 
     },
     ],
  }

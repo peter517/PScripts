@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
-#include<dlfcn.h> 
+#include <dlfcn.h> 
 
 #include "pthread/include/pthread.h"
 #include "math/include/math.h"
@@ -33,10 +33,6 @@ int main(int argc, char *argv[])
     #ifdef DEBUG
         printf("DEBUG\n");
     #endif
-    
-    #ifdef COMPLIE_MODE
-        printf("COMPLIE_MODE\n");
-    #endif
 
     CLibUtils* cLibUtils = new CLibUtils;
     cLibUtils->Load("prebuild/libprebuildrandom.so");
@@ -44,9 +40,6 @@ int main(int argc, char *argv[])
     if(pGetRandomInt == NULL){
         printf("pGetRandomInt == NULL\n");
     }
-    int(*pTest)();
-    pTest = (int (*)())pGetRandomInt;
-
     
     pthread_t thrd1, thrd2;
 
@@ -54,15 +47,19 @@ int main(int argc, char *argv[])
     pthread_create(&thrd2, NULL, task2, NULL);
 
     sleep(1);
-    printf("Main thread exit...\n");
+
     printf("math test=%d\n",add(1,1));
     printf("random int=%d\n",getRandomInt());
 
     printf("prebuild math test=%d\n",prebuildAdd(2,2));
-    printf("prebuild random int=%d\n",pTest());
+    int(*fGetRandomInt)();
+    fGetRandomInt = (int (*)())pGetRandomInt;
+    printf("prebuild random int=%d\n",fGetRandomInt());
 
-    //dlclose(pdlHandle);
     cLibUtils->Unload();
     delete cLibUtils;
+
+    printf("Main thread exit...\n");
+    
     return 0;
 }

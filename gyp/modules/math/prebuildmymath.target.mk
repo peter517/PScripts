@@ -5,26 +5,30 @@ TARGET := prebuildmymath
 DEFS_Debug := '-DDEBUG'
 
 # Flags passed to all source files.
-CFLAGS_Debug := 
+CFLAGS_Debug := -Wall \
+	-fPIC
 
 # Flags passed to only C files.
 CFLAGS_C_Debug := 
 
 # Flags passed to only C++ files.
-CFLAGS_CC_Debug := 
+CFLAGS_CC_Debug := -Wall \
+	-fPIC
 
 INCS_Debug := -Iinclude
 
 DEFS_Release := '-DNDEBUG'
 
 # Flags passed to all source files.
-CFLAGS_Release := 
+CFLAGS_Release := -Wall \
+	-fPIC
 
 # Flags passed to only C files.
 CFLAGS_C_Release := 
 
 # Flags passed to only C++ files.
-CFLAGS_CC_Release := 
+CFLAGS_CC_Release := -Wall \
+	-fPIC
 
 INCS_Release := -Iinclude
 
@@ -54,11 +58,11 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 
 # End of this set of suffix rules
 ### Rules for final target.
-LDFLAGS_Debug := 
+LDFLAGS_Debug := -pthread
 
-LDFLAGS_Release := 
+LDFLAGS_Release := -pthread
 
-LIBS := 
+LIBS := -fPIC
 
 $(obj).target/libprebuildmymath.a: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(obj).target/libprebuildmymath.a: LIBS := $(LIBS)
