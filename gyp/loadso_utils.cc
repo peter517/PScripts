@@ -8,21 +8,21 @@
 #include "include/loadso_utils.h"
 
 
-CLibUtils::CLibUtils():
+LoadSoUtils::LoadSoUtils():
     mpHandle( NULL ),
     mbLoaded(false)
 {
         mLibName[0] = 0;
 }
     
-CLibUtils::~CLibUtils()
+LoadSoUtils::~LoadSoUtils()
 {
     if(mbLoaded == true){
         Unload();
     }
 }
 
-int32_t CLibUtils::Load(const char* name)
+int32_t LoadSoUtils::Load(const char* name)
 {
     if(name == NULL){
         return IVAIL_PARAM;
@@ -37,7 +37,7 @@ int32_t CLibUtils::Load(const char* name)
     return OK;
 }
 
-int32_t CLibUtils::Unload()
+int32_t LoadSoUtils::Unload()
 {
     if(mbLoaded == false){
         return STATE_ERROR;
@@ -50,7 +50,7 @@ int32_t CLibUtils::Unload()
     return true;
 }
 
-void* CLibUtils::QueryInterface(const char* funcname)
+void* LoadSoUtils::QueryInterface(const char* funcname)
 {
     void* pfunc = NULL;
     if(mbLoaded == true && mpHandle != NULL){

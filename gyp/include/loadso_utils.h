@@ -13,11 +13,11 @@ enum Loadso_ERROR
 };
 
 
-class CLibUtils
+class LoadSoUtils
 {
 public:
-    CLibUtils();
-    virtual ~CLibUtils();
+    LoadSoUtils();
+    virtual ~LoadSoUtils();
     
     int32_t Load(const char* name);
     int32_t Unload();
@@ -28,8 +28,8 @@ private:
     char mLibName[256];
     bool mbLoaded;
     
-    CLibUtils(const CLibUtils&);
-    CLibUtils& operator=(const CLibUtils&);
+    LoadSoUtils(const LoadSoUtils&);
+    LoadSoUtils& operator=(const LoadSoUtils&);
 };
 
 

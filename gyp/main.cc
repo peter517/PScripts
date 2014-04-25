@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
         printf("DEBUG\n");
     #endif
 
-    CLibUtils* cLibUtils = new CLibUtils;
-    cLibUtils->Load("prebuild/libprebuildrandom.so");
-    void* pGetRandomInt = cLibUtils->QueryInterface("_Z20getPrebuildRandomIntv");
+    LoadSoUtils* loadSoUtils = new LoadSoUtils;
+    loadSoUtils->Load("prebuild/libprebuildrandom.so");
+    void* pGetRandomInt = loadSoUtils->QueryInterface("_Z20getPrebuildRandomIntv");
     if(pGetRandomInt == NULL){
         printf("pGetRandomInt == NULL\n");
     }
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
     fGetRandomInt = (int (*)())pGetRandomInt;
     printf("prebuild random int=%d\n",fGetRandomInt());
 
-    cLibUtils->Unload();
-    delete cLibUtils;
+    loadSoUtils->Unload();
+    delete loadSoUtils;
 
     printf("Main thread exit...\n");
     
