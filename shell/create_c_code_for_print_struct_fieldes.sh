@@ -4,14 +4,13 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#	create large print-code for c struct
+#	create c codes for print c struct
 
 [ $# -le 1 ] && echo "no param" && return
 
 uncomment_file_content=`sed  's/\/.*\|\*.*\///g' $1`
 
 fields=`echo $uncomment_file_content | awk '{ gsub(/^[ \t]+/, "", $0); if ($0 != "" && match($0, /^\*|^\//) == false ) print $2}' | xargs `
-#echo fields=$fields
 
 for field in $fields
 do

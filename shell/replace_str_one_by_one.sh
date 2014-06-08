@@ -4,7 +4,7 @@
 #Email:peter517@126.com
 #CreateTime:2014-04-04_15:34:05
 #Comments:
-#	replace the str ,src str and dst str are both in the file 
+#	replace the src str and dst str one by one
 
 [ $# != 3 ] && echo "enter: filename srcStr disStr" && return
 
