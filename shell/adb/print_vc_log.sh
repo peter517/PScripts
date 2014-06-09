@@ -10,12 +10,12 @@
 
 [ -z $1 ] && echo "no params" && return
 
-. adb_connect_not_wise.sh $1
+. adb_connect.sh $1
 
 adb logcat -v time -d > $PC_HOME_PATH/vc-${1}.log
 
 [ -z $2 ] && return
-. adb_connect_not_wise.sh $2
+. adb_connect.sh $2
 
 adb logcat -v time -d > $PC_HOME_PATH/vc-${2}.log
 

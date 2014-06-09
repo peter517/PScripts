@@ -24,6 +24,7 @@ set ylabel \"$yfield\"
 set xlabel \"$xfield\"
 set xdata time
 set timefmt \"$time_format\"
+set grid
 set output './$output_chart_file'
-plot \"$data_file\" using 1:2 with lines 
+plot \"$data_file\" using 1:2 with linespoints linecolor 3 linewidth 2 pointtype 7 pointsize 1
 " | gnuplot
