@@ -3,6 +3,7 @@
 TOOLSET := target
 TARGET := linux_c_test
 DEFS_Debug := '-DGYP_DEFINE' \
+	'-DGYP_DEFINE_A_VALUE=123' \
 	'-DGYP_VAR' \
 	'-DDEBUG'
 
@@ -22,6 +23,7 @@ INCS_Debug := -I. \
 	-Imodules
 
 DEFS_Release := '-DGYP_DEFINE' \
+	'-DGYP_DEFINE_A_VALUE=123' \
 	'-DGYP_VAR' \
 	'-DNDEBUG'
 

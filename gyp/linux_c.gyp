@@ -6,12 +6,12 @@
         {
             'Debug': 
             {
-                'defines': [ 'DEBUG'],
+                'defines': ['LINUX_C_DEBUG'],            
             },
             'Release': 
             {
-                'defines': [ 'NDEBUG' ],
-            }
+                'defines': ['LINUX_C_RELEASE' ],
+            },
         },
     },
     
@@ -31,6 +31,7 @@
         'defines': 
         [
             'GYP_DEFINE',
+            'GYP_DEFINE_A_VALUE=123',
         ],
         'sources': 
         [
@@ -69,7 +70,7 @@
                 ]
              },
              ],
-             ['GYP_VAR == "gyp"', 
+             ['DEFAULT_VAR == "gyp"', 
                 {
                     'defines': 
                     [

@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
         printf("GYP_VAR\n");
     #endif
 
-    #ifdef DEBUG
-        printf("DEBUG\n");
+    #ifdef LINUX_C_DEBUG
+        printf("LINUX_C_DEBUG\n");
     #endif
 
     LoadSoUtils* loadSoUtils = new LoadSoUtils;
@@ -55,6 +55,8 @@ int main(int argc, char *argv[])
     int(*fGetRandomInt)();
     fGetRandomInt = (int (*)())pGetRandomInt;
     printf("prebuild random int=%d\n",fGetRandomInt());
+
+    printf("GYP_DEFINE_A_VALUE=%d\n",GYP_DEFINE_A_VALUE);
 
     loadSoUtils->Unload();
     delete loadSoUtils;
