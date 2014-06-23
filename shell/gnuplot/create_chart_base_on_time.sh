@@ -11,7 +11,7 @@
 data_file=$1
 yfield="KB"
 xfield="Time"
-title="videochat memory tendency"
+title="Videochat Memory Tendency"
 create_date=`date +%Y-%m-%d-%H-%M-%S`
 output_chart_file="vc-$create_date.png"
 time_format="%Y%m%d%H%M%S"
