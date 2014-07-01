@@ -16,10 +16,13 @@ set apk_main_activity_name=com.yunos.tv.videochat/com.yunos.tvvideochat.activity
 set max_pull_wait_time=10000
 set pull_record_bat=%box_ip%_pull_record.bat
 set pull_playout_bat=%box_ip%_pull_playout.bat
+set pull_avinout_chart_bat=%box_ip%_pull_avinout_chart.bat
 
-if not exist %dir_name% md %dir_name%
-
-@del /f /s %dir_name%\*.bat > nul
+if exist %dir_name%  (
+   @del /f /s %dir_name%\*.bat > nul
+) else (
+	md %dir_name%
+)
 
 @echo on
 :adb_connect
@@ -41,24 +44,24 @@ if not exist %dir_name% md %dir_name%
 @echo create %pull_log_bat% finshed!
 
 :install
-@echo @call %adb_connent_bat% > %dir_name%/%install_bat%
-@echo @echo start install apk...  >> %dir_name%/%install_bat%
-@echo @adb uninstall com.yunos.tv.videochat >> %dir_name%/%install_bat%
-@echo @cd.. >> %dir_name%/%install_bat%
-@echo adb install %apk_name% >> %dir_name%/%install_bat%
-@echo @adb shell am start -n %apk_main_activity_name% >> %dir_name%/%install_bat%
-@echo @echo finsh install apk >> %dir_name%/%install_bat%
-@echo @pause >> %dir_name%/%install_bat%
-@attrib %dir_name%/%install_bat% +r
-@echo create %install_bat% finshed!
+:@echo @call %adb_connent_bat% > %dir_name%/%install_bat%
+:@echo @echo start install apk...  >> %dir_name%/%install_bat%
+:@echo @adb uninstall com.yunos.tv.videochat >> %dir_name%/%install_bat%
+:@echo @cd.. >> %dir_name%/%install_bat%
+:@echo adb install %apk_name% >> %dir_name%/%install_bat%
+:@echo @adb shell am start -n %apk_main_activity_name% >> %dir_name%/%install_bat%
+:@echo @echo finsh install apk >> %dir_name%/%install_bat%
+:@echo @pause >> %dir_name%/%install_bat%
+:@attrib %dir_name%/%install_bat% +r
+:@echo create %install_bat% finshed!
 
 :install_online
-@echo @call %adb_connent_bat% > %dir_name%/%install_online_bat%
-@echo @adb shell ping -c 1 -s 100 %remote_server% >> %dir_name%/%install_online_bat%
-@echo @echo start install apk online... >> %dir_name%/%install_online_bat%
-@echo @pause >> %dir_name%/%install_online_bat%
-@attrib %dir_name%/%install_online_bat% +r
-@echo create %install_online_bat% finshed!
+:@echo @call %adb_connent_bat% > %dir_name%/%install_online_bat%
+:@echo @adb shell ping -c 1 -s 100 %remote_server% >> %dir_name%/%install_online_bat%
+:@echo @echo start install apk online... >> %dir_name%/%install_online_bat%
+:@echo @pause >> %dir_name%/%install_online_bat%
+:@attrib %dir_name%/%install_online_bat% +r
+:@echo create %install_online_bat% finshed!
 
 :pull record
 @echo @call %adb_connent_bat% > %dir_name%/%pull_record_bat%
@@ -85,5 +88,16 @@ if not exist %dir_name% md %dir_name%
 @echo @pause >> %dir_name%/%pull_playout_bat%
 @attrib %dir_name%/%pull_playout_bat% +r
 @echo create %pull_playout_bat% finshed!
+
+:pull avinout chart
+:@echo @call %adb_connent_bat% > %dir_name%/%pull_avinout_chart_bat%
+:@echo @echo start pull avinout chart...  >> %dir_name%/%pull_avinout_chart_bat%
+:@echo @adb shell rm /sdcard/mmpc/chart/* >> %dir_name%/%pull_avinout_chart_bat%
+:@echo adb shell am broadcast -a m.avinout.save >> %dir_name%/%pull_avinout_chart_bat%
+:@echo @adb pull /sdcard/mmpc/chart/ >> %dir_name%/%pull_avinout_chart_bat%
+:@echo @echo finsh pull avinout chart >> %dir_name%/%pull_avinout_chart_bat%
+:@echo @pause >> %dir_name%/%pull_avinout_chart_bat%
+:@attrib %dir_name%/%pull_avinout_chart_bat% +r
+:@echo create %pull_avinout_chart_bat% finshed!
 
 @pause
