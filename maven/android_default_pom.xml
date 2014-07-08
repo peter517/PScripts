@@ -7,6 +7,8 @@
 	<packaging>apk</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.svn.path>http://svn.alisoft-inc.com/repos/mmp_client/branches/mmpc-android/src/mmpc/android/TrafficFloatWindow</project.svn.path>
 	</properties>
 
 	<dependencies>
@@ -85,5 +87,32 @@
 			</plugin>
 		</plugins>
 	</build>
+	<scm>
+		<connection>scm:svn:http://svn.alisoft-inc.com/repos/mmp_client/branches/mmpc-android/src/mmpc/android/TrafficFloatWindow</connection>
+		<developerConnection>scm:svn:http://svn.alisoft-inc.com/repos/mmp_client/branches/mmpc-android/src/mmpc/android/TrafficFloatWindow</developerConnection>
+		<url>http://svn.alisoft-inc.com/repos/mmp_client/branches/mmpc-android/src/mmpc/android/TrafficFloatWindow</url>
+	</scm>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<type>range</type>
+					<range>60</range>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>                   
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
 
