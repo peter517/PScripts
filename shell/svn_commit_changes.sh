@@ -5,9 +5,9 @@
 
 IFS=" "
 
-INGORE_FILES="mmpc/mmpc.gyp"
+INGORE_FILES="mmpc/mmpc.gyp mmpc/android/mmpc/src/main/java/ali/mmpc/util/MmpcGlobal.java mmpc/android/mmpc/src/main/java/ali/mmpc/util/LoadLibraryUtil.java"
 VAILD_POSTFIX="c java cc h mk sh cpp gyp gypi"
-INVAILD_POSTFIX="class txt properties lst jar dex"
+INVAILD_POSTFIX="class txt properties lst jar dex so"
 
 SVN_CHANGE_FILES=`svn status | egrep [MAD] | awk '{ if ($1 == "M" || $1 == "A" || $1 == "D" ) {print $2} }' | xargs `
 
@@ -22,7 +22,7 @@ for change_file in $SVN_CHANGE_FILES
 do
 	change_file_postfix=${change_file##*.}
 	
-	[ $change_file_postfix == $change_file ] && continue 
+#	[ $change_file_postfix == $change_file ] && continue 
 
 	for invaild_postfix in $INVAILD_POSTFIX
 	do
