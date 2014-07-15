@@ -22,20 +22,28 @@ voe_test_path=${VOETEST_HOME}
 pack_path=${XTRUNK_HOME}/pack
 pack_so_symbol_path=${pack_path}/symbol
 
+#build env
+APK_BUILD=ant debug
+JAR_BUILD=mvn clean package
+
 #makefile settings
 strip_tool=${XTRUNK_HOME}/third_party/android_tools/ndk/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
 
 #modules
 all:pack_mmpc_sdk
 	echo "pack mmpc sdk finished"
+
+all_clean:
+	$(RM) -rf out
+
 pack_clean:
-	-rm -rf ${pack_path}/*
+	$(RM) -rf ${pack_path}/*
 	mkdir -p ${pack_so_symbol_path}
 	@echo "pack clean finished"
 
 allengine_clean:
-	-rm ${pack_path}/libavengine*.so
-	-rm ${pack_so_symbol_path}/libavengine*.so
+	$(RM) ${pack_path}/libavengine*.so
+	$(RM) ${pack_so_symbol_path}/libavengine*.so
 	@echo "allengine clean finished"
 
 allengine:allengine_clean
@@ -49,33 +57,33 @@ allengine:allengine_clean
 	@echo "build all engine finished"
 
 mmpc_jar_clean:
-	-rm ${pack_path}/mmp*.jar
+	$(RM) ${pack_path}/mmp*.jar
 	@echo "mmpc jar clean finished"
 
 mmpc_jar:mmpc_jar_clean
-	cd ${MMPC_HOME} && mvn clean package
+	cd ${MMPC_HOME} && $(JAR_BUILD)
 	cp -f ${MMPC_HOME}/target/${mmpc_jar_name} ${pack_path}/${mmpc_jar_name_pack}
 	@echo "build mmpc_jar finished"
 
 chatdemo_clean:
-	-rm ${pack_path}/chatdemo*.apk
+	$(RM) ${pack_path}/chatdemo*.apk
 	@echo "chatdemo clean  finished"
 
 chatdemo:chatdemo_clean allengine mmpc_jar
-	-rm ${chatdemo_path}/libs/armeabi-v7a/*.so
-	$( call copySdkToApp, ${chatdemo_path} )
-	cd ${chatdemo_path} && ant debug
+	$(RM) ${chatdemo_path}/libs/armeabi-v7a/*.so
+	$(call copySdkToApp, ${chatdemo_path}/libs/armeabi-v7a,${chatdemo_path}/libs)
+	cd ${chatdemo_path} && $(APK_BUILD)
 	cp ${chatdemo_path}/bin/${chatdemo_apk_name} ${pack_path}/${chatdemo_apk_name_pack}
 	@echo "build chatdemo finished"
 
 voe_test_clean:
-	-rm ${pack_path}/voetest*.apk
+	$(RM) ${pack_path}/voetest*.apk
 	@echo "voe test clean finished"
 
 voe_test:allengine mmpc_jar
-	-rm ${voe_test_path}/libs/armeabi-v7a/*.so
-	$( call copySdkToApp, ${voe_test_path} )
-	cd ${voe_test_path} && ant debug
+	$(RM) ${voe_test_path}/libs/armeabi-v7a/*.so
+	$( call copySdkToApp, ${voe_test_path}/libs/armeabi-v7a,${voetest}/libs )
+	cd ${voe_test_path} && $(APK_BUILD)
 	@echo "build voetest finished"
 
 pack_mmpc_sdk:chatdemo 
@@ -85,14 +93,11 @@ pack_mmpc_sdk:chatdemo
 #functions
 define copySdkToApp
 
-app_so_path=$(1)/libs/armeabi-v7a/
-app_jar_path=$(1)/libs
+cp -f ${pack_path}/${libavengine_name_pack} ${1}
+cp -f ${pack_path}/${libado_name_pack} ${1}
+cp -f ${libudp_transport_path} ${1}
+cp -f ${libjxcore_path} ${1}
 
-cp -f ${pack_path}/${libavengine_name_pack} ${app_so_path}
-cp -f ${pack_path}/${libado_name_pack} ${app_so_path}
-cp -f ${pack_path}/${libudp_transport_path} ${app_so_path}
-cp -f ${pack_path}/${libjxcore_path} ${app_so_path}
-
-cp -f ${pack_path}/${mmpc_jar_name_pack} ${app_jar_path}
+cp -f ${MMPC_HOME}/target/${mmpc_jar_name} ${2}
 
 endef
