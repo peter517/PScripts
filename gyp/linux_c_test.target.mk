@@ -5,7 +5,7 @@ TARGET := linux_c_test
 DEFS_Debug := '-DGYP_DEFINE' \
 	'-DGYP_DEFINE_A_VALUE=123' \
 	'-DGYP_VAR' \
-	'-DDEBUG'
+	'-DLINUX_C_DEBUG'
 
 # Flags passed to all source files.
 CFLAGS_Debug := -Werror \
@@ -25,7 +25,7 @@ INCS_Debug := -I. \
 DEFS_Release := '-DGYP_DEFINE' \
 	'-DGYP_DEFINE_A_VALUE=123' \
 	'-DGYP_VAR' \
-	'-DNDEBUG'
+	'-DLINUX_C_RELEASE'
 
 # Flags passed to all source files.
 CFLAGS_Release := -Werror \
@@ -55,8 +55,8 @@ $(OBJS): | $(builddir)/lib.target/librandom.so $(obj).target/modules/math/libmym
 # CFLAGS et al overrides must be target-local.
 # See "Target-specific Variable Values" in the GNU Make manual.
 $(OBJS): TOOLSET := $(TOOLSET)
-$(OBJS): GYP_CFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE))
-$(OBJS): GYP_CXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE))
+$(OBJS): GYP_CFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE)) $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE))
+$(OBJS): GYP_CXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE)) $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE))
 
 # Suffix rules, putting all outputs into $(obj).
 
@@ -74,12 +74,10 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cc FORCE_DO_CMD
 # End of this set of suffix rules
 ### Rules for final target.
 LDFLAGS_Debug := -pthread \
-	-Wl,-rpath=\$$ORIGIN/lib.target/ \
-	-Wl,-rpath-link=\$(builddir)/lib.target/
+	-Wl,-rpath=\$$ORIGIN/lib.target/
 
 LDFLAGS_Release := -pthread \
-	-Wl,-rpath=\$$ORIGIN/lib.target/ \
-	-Wl,-rpath-link=\$(builddir)/lib.target/
+	-Wl,-rpath=\$$ORIGIN/lib.target/
 
 LIBS := -ldl \
 	prebuild/libprebuildmymath.a

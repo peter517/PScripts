@@ -56,7 +56,7 @@
             {
 	            'ldflags': 
                 [
-                   '-pthread',
+                   '-pthread', 
                 ],
                 'cflags': 
                 [
@@ -64,13 +64,13 @@
                         '-Wall',
                 ],
                 'cflags_cc': 
-                [
+                [ 
                         '-Werror',
                         '-Wall',
                 ]
              },
-             ],
-             ['DEFAULT_VAR == "gyp"', 
+             ], 
+             ['GYP_VAR == "gyp"', 
                 {
                     'defines': 
                     [
