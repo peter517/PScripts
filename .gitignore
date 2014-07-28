@@ -8,6 +8,9 @@
 *.Makefile
 gyp/Makefile
 
+#source insight as sytle
+*.orig
+
 gen/
 *.pydevproject
 .project
