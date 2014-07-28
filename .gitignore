@@ -5,7 +5,8 @@
 
 #gyp
 *.mk
-*.MakeFile
+*.Makefile
+gyp/Makefile
 
 gen/
 *.pydevproject
