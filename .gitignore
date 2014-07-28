@@ -2,10 +2,10 @@
 ## Eclipse
 #################
 
-#ka
-target/
-*.log
-*.db
+
+#gyp
+*.mk
+*.MakeFile
 
 gen/
 *.pydevproject

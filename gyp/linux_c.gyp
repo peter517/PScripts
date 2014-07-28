@@ -17,7 +17,7 @@
     
     'targets': 
     [
-      {
+      { 
         'target_name': 'linux_c_test',
         'type': 'executable',
         'dependencies': [
