@@ -9,9 +9,9 @@
 [ -z $1 ] && echo "no param" && return
 
 data_file=$1
-yfield="KB"
-title="Videochat Memory Tendency"
-create_date=`date +%Y-%m-%d-%H-%M-%S`
+yfield="MS"
+title="Play Cost Time"
+create_date=`date +%Y%m%d-%H%M%S`
 output_chart_file="vc-$create_date.png"
 time_format="%Y%m%d%H%M%S"
 
