@@ -20,10 +20,11 @@
 #    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 color_end_mark="\033[0m"
-logo_color="\033[32m"
+logo_color="\033[32m\033[1m"
 welcome_word_color="\033[36m"
-disk_usage_color="\033[31m"
+disk_usage_color="\033[31m\033[4m"
 
+echo ""
 echo "$logo_color                 _ __ ___    _ __ ___     ______     __ _ __         $color_end_mark"
 echo "$logo_color                |  _   _ \  |  _   _ \   /  _ _ \   /  _ _ _\		$color_end_mark	"
 echo "$logo_color                | | | | | | | | | | | |  | |___| | |  /			$color_end_mark				"
@@ -31,6 +32,8 @@ echo "$logo_color                |_| |_| |_| |_| |_| |_|  |  _____| |  |		$color
 echo "$logo_color                                         | |       |  \__ _ _			$color_end_mark	"
 echo "$logo_color                                         |_|        \ __ _ _/				$color_end_mark"
 
-echo "$welcome_word_color\nWelcome To MMPC Sdk Build Server\n$color_end_mark"  
+echo "$welcome_word_color\nWelcome To MMPC Sdk Build Server!!!\n$color_end_mark"  
+
 echo "${disk_usage_color}Disk Usage:$color_end_mark"
 df -h | head -2
+echo ""
