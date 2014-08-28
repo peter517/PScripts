@@ -6,24 +6,29 @@
 #Comments: record every user operator history, add the content to end of /etc/profile
 #
 
+USER_IP=`who -u am i 2>/dev/null| awk '{print $NF}'|sed -e 's/[()]//g'`
+
 if [ "$USER_IP" = "" ]
 then
-USER_IP=`hostname`
+        USER_IP=`hostname`
 fi
+
 path="//tmp//history"
+
 if [ ! -d ${path} ]
 then
-mkdir ${path}
-chmod 777 ${path}
+        mkdir ${path}
+        chmod 777 ${path}
 fi
+
 if [ ! -d ${path}/${LOGNAME} ]
 then
-mkdir ${path}/${LOGNAME}
-chmod 300 ${path}/${LOGNAME}
+        mkdir ${path}/${LOGNAME}
+        chmod 300 ${path}/${LOGNAME}
 fi
+
 export HISTSIZE=4096
-export HISTFILE="${path}/${LOGNAME}/${USER_IP}.dbhist"
+export HISTFILE="${path}/${LOGNAME}/${USER_IP}.`date +%Y%m%d-%H%M%S`.dbhist"
 export PROMPT_COMMAND="history -a"
 export HISTTIMEFORMAT="[%F %T][`whoami`]: "
 chmod 600 ${path}/${LOGNAME}/*dbhist* 2>/dev/null
-
