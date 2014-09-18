@@ -60,13 +60,9 @@
                 ],
                 'cflags': 
                 [
-                        '-Werror',
-                        '-Wall',
                 ],
                 'cflags_cc': 
                 [ 
-                        '-Werror',
-                        '-Wall',
                 ]
              },
              ], 

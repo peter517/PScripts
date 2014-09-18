@@ -55,7 +55,7 @@ fi
 if [ ! -d ${path}/${login_day} ]
 then
         mkdir ${path}/${login_day}
-        chmod 300 ${path}/${login_day}
+        chmod 777 ${path}/${login_day}
 fi
 
 export HISTSIZE=4096
@@ -63,4 +63,4 @@ export HISTFILE="${path}/${login_day}/${login_date}.${LOGNAME}.${USER_HOSTNAME}.
 export PROMPT_COMMAND="history -a"
 export HISTTIMEFORMAT='%F %T '
 
-chmod 600 ${path}/${LOGNAME}/*dbhist* 2>/dev/null
+chmod 777 ${path}/${LOGNAME}/*dbhist* 2>/dev/null

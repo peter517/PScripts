@@ -20,6 +20,11 @@
 
 #include "include/loadso_utils.h"
 
+static const int static_value = 1;
+static const int static_value1 = 2;
+const int const_value = 3;
+static  int const_value1 = 4;
+
 int main(int argc, char *argv[])
 {
 #ifdef GYP_DEFINE
@@ -33,6 +38,8 @@ int main(int argc, char *argv[])
 #ifdef LINUX_C_DEBUG
     printf("LINUX_C_DEBUG\n");
 #endif
+    int local_value=3;
+    int* new_value= new int;
 
     LoadSoUtils* loadSoUtils = new LoadSoUtils;
     loadSoUtils->Load("prebuild/libprebuildrandom.so");
