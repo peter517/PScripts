@@ -29,9 +29,9 @@ class index:
         	if(not form.validates()):
             		return render.form(form)
         	else:
-			symbol_path=/var/www/xtrunk/symbol
-			crash_stack = os.popen("echo '%s' | ndk-stack -sym %s | head -n 30" % (symbol_path, crash_log) ).read()
-#			crash_stack = os.popen("cat tmp.log | ndk-stack -sym . | tee stack.log" ).read()
+			crash_log = form.d.crash_log
+			symbol_path="/var/www/xtrunk/symbol"
+			crash_stack = os.popen("echo '%s' | ndk-stack -sym %s | head -n 30" % (crash_log, symbol_path) ).read()
             		return "%s" % (crash_stack)
 
 if __name__ == "__main__": 
