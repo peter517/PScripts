@@ -11,12 +11,7 @@ urls = (
 class index:
     	def __init__(self):
     		self.registerForm = web.form.Form(
-            # We're adding some fields and a submit button
-            # Each field has a validator, which verifies its correctness
-            # In this case we check if the field is not null
-            # Other attributes are available: description, id, HTML class name, etc
-            # See http://webpy.org/form for reference
-            	web.form.Textarea('crash_log', web.form.notnull,rows = 40, cols=120,  description='put crash log to this area'),
+            	web.form.Textarea('crash_log', web.form.notnull,rows = 40, cols=100,  description='put crash log to this area'),
             	web.form.Button('create stack'),
         )
 
@@ -32,7 +27,11 @@ class index:
 			crash_log = form.d.crash_log
 			symbol_path="/var/www/xtrunk/symbol"
 			crash_stack = os.popen("echo '%s' | ndk-stack -sym %s | head -n 30" % (crash_log, symbol_path) ).read()
-            		return "%s" % (crash_stack)
+
+			session_so_path=("/var/www/xtrunk/symbol/" + "libsessionvc.so")
+			so_version = os.popen("strings %s | grep mmpc_version " % (session_so_path)).read()
+
+            		return "\nServer %s \n\n %s" % (so_version, crash_stack)
 
 if __name__ == "__main__": 
 	app = web.application(urls, globals())
