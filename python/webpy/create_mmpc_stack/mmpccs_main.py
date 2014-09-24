@@ -9,7 +9,8 @@ sys.setdefaultencoding('utf8')
 render = web.template.render('templates/')
 
 urls = (
-  '/', 'index'
+  '/', 'index',
+  '/crash_stack', 'crash_stack'
 )
 
 class index:
@@ -36,7 +37,8 @@ class index:
 		session_so_path=(symbol_path + "libsessionvc.so")
 		so_version = os.popen("strings %s | grep mmpc_version " % (session_so_path)).read()
 
-            	return "\nServer %s \n\n %s" % (so_version, crash_stack)
+           	return "\nServer %s \n\n %s" % (so_version, crash_stack)
+           # 	return render.crash_stack("\nServer %s \n\n %s" % (so_version, crash_stack))
 
 
 if __name__ == "__main__": 
