@@ -22,9 +22,6 @@ For better control, use the options below.
 Fine tuning of the installation directories:
   --bindir=DIR           user executables [EPREFIX/bin]
 _ACEOF
-
-  cat <<\_ACEOF
-_ACEOF
 }
 
 as_cr_letters='abcdefghijklmnopqrstuvwxyz'
@@ -54,21 +51,15 @@ do
   -disable-* | --disable-*)
     ac_feature=`expr "x$ac_option" : 'x-*disable-\(.*\)'`
     # Reject names that are not valid shell variable names.
-    expr "x$ac_feature" : ".*[^-._$as_cr_alnum]" >/dev/null &&
-      { echo "$as_me: error: invalid feature name: $ac_feature" >&2
-   { (exit 1); exit 1; }; }
+    expr "x$ac_feature" : ".*[^-._$as_cr_alnum]" >/dev/null && echo "$as_me: error: invalid feature name: $ac_feature" >&2 && return
     ac_feature=`echo $ac_feature | sed 's/[-.]/_/g'`
     eval enable_$ac_feature=no ;;
 
   -enable-* | --enable-*)
     ac_feature=`expr "x$ac_option" : 'x-*enable-\([^=]*\)'`
-    echo "ac_feature1"=$ac_feature
     # Reject names that are not valid shell variable names.
-    expr "x$ac_feature" : ".*[^-._$as_cr_alnum]" >/dev/null &&
-      { echo "$as_me: error: invalid feature name: $ac_feature" >&2
-   { (exit 1); exit 1; }; }
+    expr "x$ac_feature" : ".*[^-._$as_cr_alnum]" >/dev/null && echo "$as_me: error: invalid feature name: $ac_feature" >&2a && return
     ac_feature=`echo $ac_feature | sed 's/[-.]/_/g'`
-    echo "ac_feature2"=$ac_feature
     eval enable_$ac_feature=\$ac_optarg ;;
 
   -help | --help | --hel | --he | -h)
@@ -77,41 +68,29 @@ do
   -with-* | --with-*)
     ac_package=`expr "x$ac_option" : 'x-*with-\([^=]*\)'`
     # Reject names that are not valid shell variable names.
-    expr "x$ac_package" : ".*[^-._$as_cr_alnum]" >/dev/null &&
-      { echo "$as_me: error: invalid package name: $ac_package" >&2
-   { (exit 1); exit 1; }; }
+    expr "x$ac_package" : ".*[^-._$as_cr_alnum]" >/dev/null && echo "$as_me: error: invalid package name: $ac_package" >&2 && return
     ac_package=`echo $ac_package | sed 's/[-.]/_/g'`
     eval with_$ac_package=\$ac_optarg ;;
 
   -without-* | --without-*)
     ac_package=`expr "x$ac_option" : 'x-*without-\(.*\)'`
     # Reject names that are not valid shell variable names.
-    expr "x$ac_package" : ".*[^-._$as_cr_alnum]" >/dev/null &&
-      { echo "$as_me: error: invalid package name: $ac_package" >&2
-   { (exit 1); exit 1; }; }
+    expr "x$ac_package" : ".*[^-._$as_cr_alnum]" >/dev/null && echo "$as_me: error: invalid package name: $ac_package" >&2 && return
     ac_package=`echo $ac_package | sed 's/[-.]/_/g'`
     eval with_$ac_package=no ;;
 
-  --x)
-    # Obsolete; use --with-x.
-    with_x=yes ;;
-
-  -*) { echo -e "error: unrecognized option: $ac_option\nTry \`$0 --help' for more information." >&2
-      { (exit 1); exit 1; }; }
+  -*) echo -e "error: unrecognized option: $ac_option\nTry \`$0 --help' for more information." >&2 && return
     ;;
 
   *=*)
     ac_envvar=`expr "x$ac_option" : 'x\([^=]*\)='`
     # Reject names that are not valid shell variable names.
-    expr "x$ac_envvar" : ".*[^_$as_cr_alnum]" >/dev/null &&
-      { echo "error: invalid variable name: $ac_envvar" >&2
-   { (exit 1); exit 1; }; }
+    expr "x$ac_envvar" : ".*[^_$as_cr_alnum]" >/dev/null && echo "error: invalid variable name: $ac_envvar" >&2 && return 
     eval $ac_envvar=\$ac_optarg
     export $ac_envvar ;;
 
   *)
-    echo "error: invalid param input: $ac_option" >&2
-    { (exit 1); exit 1; }; 
+    echo "error: invalid param input: $ac_option" >&2 &&  return  
     ;;
 
   esac
