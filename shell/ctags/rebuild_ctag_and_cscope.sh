@@ -12,7 +12,6 @@ echo "project_path="$project_path
 
 [ -z "$project_path" -o ! -d "$project_path" ] && echo "no param" && return
 
-
 echo "start build ctags evn"
 ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f $project_path/tags $project_path
 echo "finish build ctags evn"
