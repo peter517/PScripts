@@ -6,4 +6,8 @@
 #Comments:
 #	genarate makefile from gyp
 
-gyp --depth=. linux_c.gyp 
+
+export GYP_GENERATORS=ninja
+[ `which ninja` == "" ] && export GYP_GENERATORS=make
+
+python gyp.py --depth=. linux_c.gyp 

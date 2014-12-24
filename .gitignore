@@ -3,6 +3,7 @@
 *.pyc
 
 #gyp
+*.xcodeproj
 *.mk
 *.Makefile
 gyp/Makefile
